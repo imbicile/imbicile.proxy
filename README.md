@@ -44,3 +44,15 @@ squid_port: 3128
 ```yaml
 ciadpi_port: 1080
 ```
+
+## Плэйбук
+
+```yaml
+- name: Install proxy
+  hosts:
+    - all
+  become: true
+  roles:
+    - role: imbicile.proxy
+      tags: proxy
+```
