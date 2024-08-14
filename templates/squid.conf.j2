@@ -6,7 +6,7 @@ http_port 127.0.0.1:{{ squid_port }}
 
 dns_nameservers {{ proxy_address }}
 
-acl localnet src {{ proxy_netwrok }}
+acl localnet src {{ proxy_network }}
 
 acl Safe_ports port 80
 acl Safe_ports port 443

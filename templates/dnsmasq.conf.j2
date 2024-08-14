@@ -23,5 +23,5 @@ server=8.8.4.4
 server=1.1.1.1
 
 {% if dnsmasq_dhcp %}
-dhcp-range={{ proxy_netwrok.split('.')[:-1] | join('.') }}.100,{{ proxy_netwrok.split('.')[:-1] | join('.') }}.200,12h
+dhcp-range={{ proxy_network.split('.')[:-1] | join('.') }}.100,{{ proxy_network.split('.')[:-1] | join('.') }}.200,12h
 {% endif %}

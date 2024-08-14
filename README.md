@@ -18,7 +18,7 @@ proxy_type: "squid"
 ```yaml
 proxy_interface: "enp0s8"
 proxy_address: "192.168.33.1"
-proxy_netwrok: "192.168.33.0/24"
+proxy_network: "192.168.33.0/24"
 ```
 
 ## Включить DHCP сервер
