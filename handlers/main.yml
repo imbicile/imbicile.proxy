@@ -1,0 +1,30 @@
+---
+# handlers file for imbicile.proxy
+
+- name: Restart squid
+  become: true
+  systemd:
+    daemon_reload: true
+    name: squid.service
+    state: restarted
+
+- name: Restart redsocks
+  become: true
+  systemd:
+    daemon_reload: true
+    name: redsocks.service
+    state: restarted
+
+- name: Restart netfilter
+  become: true
+  systemd:
+    daemon_reload: true
+    name: netfilter-persistent.service
+    state: restarted
+
+- name: Restart ciadpi
+  become: true
+  systemd:
+    daemon_reload: true
+    name: ciadpi.service
+    state: restarted

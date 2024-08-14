@@ -1,0 +1,15 @@
+{{ ansible_managed | comment }}
+
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+COMMIT
+
+*nat
+:PREROUTING ACCEPT [0:0]
+-A PREROUTING -i {{ proxy_interface }} --src {{ proxy_netwrok }} ! --dst {{ proxy_netwrok }} -p tcp -j REDIRECT --to-ports {{ redsocks_port }}
+:INPUT ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+COMMIT

@@ -1,0 +1,43 @@
+---
+- name: Install requirements
+  ansible.builtin.apt:
+    package:
+      - git
+      - build-essential
+    state: present
+    update_cache: true
+
+- name: Download src
+  ansible.builtin.git:
+    repo: "https://github.com/hufrea/byedpi"
+    dest: "/tmp/byedpi"
+    version: main
+
+- name: Make byedpi
+  community.general.make:
+    chdir: "/tmp/byedpi"
+
+- name: Install byedpi
+  ansible.builtin.copy:
+    src: "/tmp/byedpi/ciadpi"
+    dest: "/usr/local/bin/ciadpi"
+    mode: "0755"
+    owner: "root"
+    group: "root"
+    remote_src: true
+
+- name: Create service ciadpi
+  ansible.builtin.template:
+    src: "ciadpi.service.j2"
+    dest: "/etc/systemd/system/ciadpi.service"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  notify: Restart ciadpi
+
+- name: Enable service ciadpi
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: ciadpi
+    enabled: true
+    masked: false

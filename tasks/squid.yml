@@ -1,0 +1,16 @@
+---
+- name: Install squid
+  ansible.builtin.apt:
+    package:
+      - squid
+    state: present
+    update_cache: true
+
+- name: Create squid config
+  ansible.builtin.template:
+    src: "squid.conf.j2"
+    dest: "/etc/squid/squid.conf"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  notify: Restart squid

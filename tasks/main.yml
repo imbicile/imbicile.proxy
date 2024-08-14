@@ -1,0 +1,19 @@
+---
+# tasks file for imbicile.proxy
+
+- name: Setup dnsmasq
+  ansible.builtin.include_tasks: dnsmasq.yml
+
+- name: Setup redsocks
+  ansible.builtin.include_tasks: redsocks.yml
+
+- name: Setup iptables
+  ansible.builtin.include_tasks: iptables.yml
+
+- name: Setup squid
+  ansible.builtin.include_tasks: squid.yml
+  when: proxy_type == "squid"
+
+- name: Setup ciadpi
+  ansible.builtin.include_tasks: ciadpi.yml
+  when: proxy_type == "ciadpi"

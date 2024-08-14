@@ -1,0 +1,17 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=ciadpi
+After=network-online.target
+
+[Service]
+Type=simple
+
+ExecStart=/usr/local/bin/ciadpi -i 127.0.0.1 -p {{ ciadpi_port }} --disorder 1 --auto=torst --tlsrec 1+s
+
+SyslogIdentifier=ciadpi
+Restart=always
+RestartSec=15s
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+---
+- name: Install redsocks
+  ansible.builtin.apt:
+    package:
+      - redsocks
+    state: present
+    update_cache: true
+
+- name: Create redsocks config
+  ansible.builtin.template:
+    src: "redsocks.conf.j2"
+    dest: "/etc/redsocks.conf"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  notify: Restart redsocks

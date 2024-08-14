@@ -1,0 +1,22 @@
+// {{ ansible_managed }}
+
+base {
+    log_debug = off;
+    log_info = on;
+    log = "file:/var/log/redsocks.log";
+    daemon = on;
+    redirector = iptables;
+}
+
+redsocks {
+    local_ip = {{ proxy_address }};
+    local_port = {{ redsocks_port }};
+    ip = 127.0.0.1;
+{% if proxy_type == "squid" %}
+    port = {{ squid_port }};
+    type = http-connect;
+{% elif proxy_type == "ciadpi" %}
+    port = {{ ciadpi_port }};
+    type = socks5;
+{% endif %}
+}

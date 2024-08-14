@@ -1,0 +1,13 @@
+---
+# defaults file for imbicile.proxy
+
+proxy_type: "squid" # ciadpi / squid
+proxy_interface: "enp0s8"
+proxy_address: "192.168.33.1"
+proxy_netwrok: "192.168.33.0/24"
+
+dnsmasq_dhcp: false
+
+redsocks_port: 12345
+squid_port: 3128
+ciadpi_port: 1080
