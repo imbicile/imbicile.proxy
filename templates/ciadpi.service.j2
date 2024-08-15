@@ -7,7 +7,7 @@ After=network-online.target
 [Service]
 Type=simple
 
-ExecStart=/usr/local/bin/ciadpi -i 127.0.0.1 -p {{ ciadpi_port }} --disorder 1 --auto=torst --tlsrec 1+s
+ExecStart=/usr/local/bin/ciadpi -i 127.0.0.1 -p {{ ciadpi_port }} --auto=torst --timeout 3 --tlsrec 3+s --disorder 1
 
 SyslogIdentifier=ciadpi
 Restart=always
