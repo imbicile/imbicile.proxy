@@ -38,6 +38,7 @@
 - name: Enable service ciadpi
   ansible.builtin.systemd:
     daemon_reload: true
-    name: ciadpi
+    name: ciadpi.service
+    state: started
     enabled: true
     masked: false

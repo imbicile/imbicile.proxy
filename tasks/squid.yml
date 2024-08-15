@@ -14,3 +14,11 @@
     group: "root"
     mode: "0644"
   notify: Restart squid
+
+- name: Enable service squid
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: squid.service
+    state: started
+    enabled: true
+    masked: false

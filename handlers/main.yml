@@ -15,6 +15,13 @@
     name: redsocks.service
     state: restarted
 
+- name: Restart dnsmasq
+  become: true
+  systemd:
+    daemon_reload: true
+    name: dnsmasq.service
+    state: restarted
+
 - name: Restart netfilter
   become: true
   systemd:

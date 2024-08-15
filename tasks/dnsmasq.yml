@@ -13,4 +13,12 @@
     owner: "root"
     group: "root"
     mode: "0644"
-  notify: Restart netfilter
+  notify: Restart dnsmasq
+
+- name: Enable service dnsmasq
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: dnsmasq.service
+    state: started
+    enabled: true
+    masked: false
